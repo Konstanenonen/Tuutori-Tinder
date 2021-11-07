@@ -27,12 +27,15 @@ public class controller {
  private Scene scene;
  private Parent root;
  private UsersList userList;
+ private String email;
  @FXML
  Label nameLabel;
  @FXML
  Label majorLabel;
  @FXML
  Label skillLabel;
+ @FXML 
+ Label connectionSection;
 
 
  public void initialize() throws SQLException {
@@ -97,14 +100,30 @@ public class controller {
 	 nameLabel.setText(nextUser.getName());
 	 majorLabel.setText(nextUser.getMajor());
 	 skillLabel.setText(nextUser.getSkill());
+	 this.email = nextUser.getEmail();
  }
- public void connectTutor(ActionEvent event)
+ public void connectTutor(ActionEvent event) throws IOException, SQLException
  {
-	 Users userInfoEmail = this.userList.getUser();
 	 Alert a = new Alert(AlertType.NONE);
 	 a.setAlertType(AlertType.INFORMATION);
 	 a.show();
-	 a.setHeaderText(userInfoEmail.getEmail());
+	 a.setHeaderText("You made a new connection!\nGo to connections page to contact your new tuudors.");
+	 
+	 String connectionText = nameLabel.getText();
+	 String connectionText2 = this.email;
+	 System.out.println(connectionText);
+	 
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Connections.fxml"));
+		root = loader.load();
+		
+		ControllerConnections controllerConnections = loader.getController();
+		controllerConnections.setConnectionText(connectionText, connectionText2);
+		
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	 
  }
  
  public void initData(UsersList userList) {
