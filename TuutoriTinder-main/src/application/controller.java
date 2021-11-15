@@ -17,6 +17,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -28,6 +30,7 @@ public class controller {
  private Parent root;
  private UsersList userList;
  private String email;
+ private ProfileImages profileImages;
  @FXML
  Label nameLabel;
  @FXML
@@ -36,11 +39,16 @@ public class controller {
  Label skillLabel;
  @FXML 
  Label connectionSection;
+ @FXML 
+ ImageView profilePicture;
+ 
+ Image myImage = new Image(getClass().getResourceAsStream("image.png"));
 
 
  public void initialize() throws SQLException {
 	 	UsersList userList = new UsersList();
-		
+		ProfileImages profileImages = new ProfileImages();
+	 	
 		// variables
 	     final String url = "jdbc:mysql:///tuutoritinder";
 	     final String user = "root";
@@ -83,7 +91,7 @@ public class controller {
 	     st.close();
 	     con.close();
 	     
-	     initData(userList);
+	     initData(userList, profileImages);
  }
  
  public void switchToSceneBack(ActionEvent event) throws IOException {
@@ -101,6 +109,7 @@ public class controller {
 	 majorLabel.setText(nextUser.getMajor());
 	 skillLabel.setText(nextUser.getSkill());
 	 this.email = nextUser.getEmail();
+	 profilePicture.setImage(profileImages.getProfileImage());
  }
  public void connectTutor(ActionEvent event) throws IOException, SQLException
  {
@@ -126,8 +135,9 @@ public class controller {
 	 
  }
  
- public void initData(UsersList userList) {
+ public void initData(UsersList userList, ProfileImages profileImages) {
 	 this.userList = userList;
+	 this.profileImages = profileImages;
  }
 
  
