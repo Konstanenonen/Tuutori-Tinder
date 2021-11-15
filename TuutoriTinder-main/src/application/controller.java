@@ -23,6 +23,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
+//tämä luokka hakee käyttäjät tietokannasta ja vaihtaa seuraavaan next-nappulasta
+//connect-nappulasta aukeaa uusi ikkuna jossa valitun tuutorin yhteystiedot
 public class controller {
 
  private Stage stage;
@@ -44,7 +46,7 @@ public class controller {
  
  Image myImage = new Image(getClass().getResourceAsStream("image.png"));
 
-
+//hakee käyttäjät tietokannasta, tallentaa paikalliseen users list:iin
  public void initialize() throws SQLException {
 	 	UsersList userList = new UsersList();
 		ProfileImages profileImages = new ProfileImages();
@@ -90,10 +92,10 @@ public class controller {
 	     rs.close();
 	     st.close();
 	     con.close();
-	     
+	     //tallentaa profiilin user list:iin
 	     initData(userList, profileImages);
  }
- 
+ //ohjaa takaisin main menuun
  public void switchToSceneBack(ActionEvent event) throws IOException {
 	  root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
 	  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -101,6 +103,7 @@ public class controller {
 	  stage.setScene(scene);
 	  stage.show();
 	 }
+//ohjaa seuraavaan profiiliin	 
  public void getNextTutor(ActionEvent event) {
  
      Users nextUser = this.userList.getUser();
@@ -111,6 +114,7 @@ public class controller {
 	 this.email = nextUser.getEmail();
 	 profilePicture.setImage(profileImages.getProfileImage());
  }
+ //connect-nappulan painaminen luo pop up-ilmoituksen valitulle tuutorille
  public void connectTutor(ActionEvent event) throws IOException, SQLException
  {
 	 Alert a = new Alert(AlertType.NONE);
@@ -134,7 +138,7 @@ public class controller {
 		stage.show();
 	 
  }
- 
+ //asettaa tietokannasta haetut tiedot paikallisiin muuttujiin
  public void initData(UsersList userList, ProfileImages profileImages) {
 	 this.userList = userList;
 	 this.profileImages = profileImages;

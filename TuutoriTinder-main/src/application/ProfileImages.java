@@ -3,7 +3,7 @@ package application;
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
-
+//tekee profiilin käyttäjäkuvan ja antaa jokaiselle käyttäjälle kuvan
 public class ProfileImages {
 	
 	private Image myImage1;
@@ -12,7 +12,7 @@ public class ProfileImages {
 	private Image myImage4;
 	private int imageIndex;
 	private ArrayList<Image> imageList;
-	
+	//tallentaa kuvan muuttujaan ja lisää sen listaan
 	public ProfileImages() {
 		this.myImage1 = new Image(getClass().getResourceAsStream("654.png"));
 		this.myImage2 = new Image(getClass().getResourceAsStream("RoopeSeta.png"));
@@ -25,7 +25,7 @@ public class ProfileImages {
 		this.imageList.add(myImage4);
 		this.imageIndex = -1;
 	}
-	
+	//tuo profiiliin yhden mahdollisen kuvan neljästä listalla olevasta kuvasta
 	public Image getProfileImage() {
 		if (this.imageIndex < (this.imageList.size() - 1) ) {
 			this.imageIndex++;

@@ -22,7 +22,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.sql.*;
 
-
+//käynnistää ohjelman ja vie etusivulle
 public class Main extends Application {
 	
 	@Override

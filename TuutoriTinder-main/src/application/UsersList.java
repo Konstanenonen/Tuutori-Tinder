@@ -1,9 +1,9 @@
 package application;
 
 import java.util.ArrayList;
-
+//tämä luokka listaa tuutorit
 public class UsersList {
-	
+	//luo listan
 	private ArrayList<Users> users;
 	private int userIndex;
 	
@@ -11,11 +11,11 @@ public class UsersList {
 			this.users = new ArrayList<>();
 			this.userIndex = 0;
 		}
-		
+		//lisää käyttäjä-oliot listaan
 		public void addUser(Users user) {
 			this.users.add(user);
 		}
-		
+		//tuo listasta järjestyksessä käyttäjät
 		public Users getUser() {
 			//int max = this.users.size() - 1;
 			//int min = 0;

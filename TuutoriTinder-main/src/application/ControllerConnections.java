@@ -15,7 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
+//tämä luokka hakee nimen ja säpon connections-ruudulle
 public class ControllerConnections {
 	
 	private Stage stage;
@@ -46,7 +46,7 @@ public class ControllerConnections {
 		connectionSection2.setText(this.email);
 		
 	}
-	
+	//ohjaa takaisin etusivulle
 	public void switchToSceneBack(ActionEvent event) throws IOException {
 		  root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
 		  stage = (Stage)((Node)event.getSource()).getScene().getWindow();

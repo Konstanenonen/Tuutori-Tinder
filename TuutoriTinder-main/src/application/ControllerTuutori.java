@@ -16,7 +16,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-
+//lisää uuden tuutori-käyttäjän tiedot tietokantaan
 public class ControllerTuutori {
 	
 	 @FXML
@@ -64,13 +64,13 @@ public class ControllerTuutori {
 	     tuutoriMajor.clear();
 	     tuutoriSkills.clear();
 	     tuutoriEmail.clear();
-	     
+	    //ilmoitus tuutorin rekisteröinnin läpimenemisestä 
 	     Alert a = new Alert(AlertType.NONE);
 		 a.setAlertType(AlertType.INFORMATION);
 		 a.show();
 		 a.setHeaderText("Thank you for registering as TuudorsPuudors!");
 	 }
-	
+	//ohjaa takaisin etusivulle
 	public void switchToSceneBack(ActionEvent event) throws IOException {
 		  root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
 		  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
